@@ -1,5 +1,6 @@
 FROM alpine:latest
 
 RUN apk add --no-cache nftables catatonit
+COPY ./entrypoint.sh /
 
-ENTRYPOINT nft -f /etc/nftables.nft && exec catatonit -P
+ENTRYPOINT ["/entrypoint.sh"]
